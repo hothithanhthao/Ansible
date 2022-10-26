@@ -1,0 +1,25 @@
+---
+# Playbook for installing Git and checking uptime
+- hosts: docker_server
+  become: yes
+  tasks:
+  - name: Ensure that the image has the latest version of git version management system
+    apt:
+      name: git
+      state: latest
+
+  - name: Check Git version
+    command: git --version
+    register: output
+
+  - name: Print Git version output to console
+    debug:
+      msg: "{{ output.stdout }}"
+
+  - name: Check hosts's uptime info
+    command: uptime
+    register: output
+
+  - name: Print hosts's uptime info to console
+    debug:
+      msg: "{{ output.stdout }}"
