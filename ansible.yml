@@ -1,6 +1,6 @@
 ---
 # Playbook for installing Git and checking uptime
-- hosts: docker_server
+- hosts: all
   become: yes
   tasks:
   - name: Ensure that the image has the latest version of git version management system
